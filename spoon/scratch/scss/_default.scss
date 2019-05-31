@@ -1,0 +1,36 @@
+// Default CSS style that applies to the spoon webpage for all screen sizes
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family:  $font-stack;
+    line-height: 1.5;
+}
+
+h1, h2, h3, h4 {
+    font-family: "Encode Sans", $font-stack;
+    font-weight: 200;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+
+h1 {
+    color: $primary-color;
+    font-size: 5rem;
+}
+
+p, h1, h2, h3, h4 {
+    margin-top: 0;
+}
+
+.container {
+    max-width:1140px;
+    padding: 15px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}

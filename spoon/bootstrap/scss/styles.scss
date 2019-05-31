@@ -1,0 +1,38 @@
+$font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-sans-serif: "Open Sans", $font-stack;
+$headings-font-family: "Encode Sans", $font-stack;
+$headings-font-weight: 200;
+$h1-font-size: 5em;
+
+@import "bootstrap.scss";
+
+/* custom styles that build upon Bootstrap styles 
+you shouldn't need any more rules than these */
+
+svg {
+    /* this makes SVGs use the current color as their fill color
+    so you can use one of the Bootstrap color utility classes to set
+    the text color on the parent element, and the SVG will automatically
+    use that as its fill color */
+    fill: currentColor;
+}
+
+@media (min-width: 768px) {
+    header {
+        background-image: url(../img/header.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        text-align: right;
+        height: 400px;        
+    }
+
+    header h1 {
+        font-size: 7em;
+    }
+
+    header .lead {
+        margin-left: 40%;
+    }
+}
+
+

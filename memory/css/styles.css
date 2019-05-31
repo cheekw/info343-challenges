@@ -1,1 +1,33 @@
 /* define any style rules you need here */
+body {
+    margin: auto;
+    width: 50%;
+    background-color: rgb(34, 34, 34);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.25vw;
+    font-weight: bold;
+    color: white;
+}
+
+#stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#tiles img {
+    width: 100%;
+}
+
+#tiles button {
+    width: 20%;
+    padding: 0.2rem;
+    margin: 0.2rem;
+}
+
+#tiles {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin: auto;
+}

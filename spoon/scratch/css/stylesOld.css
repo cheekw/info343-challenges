@@ -1,0 +1,209 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family:  "Open Sans", -apple-system, BlinkMacSystemFont, 
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, 
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", 
+    "Segoe UI Symbol";
+    line-height: 1.5;
+}
+
+h1, h2, h3, h4 {
+    font-family: "Encode Sans";
+    font-weight: 200;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+
+h1 {
+    color: #28a745;
+    font-size: 5rem;
+}
+
+p, h1, h2, h3, h4 {
+    margin-top: 0;
+}
+
+.container {
+    max-width:1140px;
+    padding: 15px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+header {
+    background-color: #e9ecef;
+}
+
+header .container {
+    height: 250px;
+    padding: 35px 15px;
+}
+
+header .lead {
+    font-size: 125%;
+    font-weight: lighter;
+}
+
+header .button {
+    display: none;
+}
+
+#features {
+    margin: 65px 0;
+}
+
+.feature {
+    display: flex;
+}
+
+.feature svg {
+    fill: #28a745;
+    margin-right: 30px;
+}
+
+#uses {
+    margin-bottom: 65px;
+}
+
+.card {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+.card-body {
+    margin: 30px 20px;
+}
+
+#testimonials {
+    margin-bottom: 35px;
+}
+
+.testimonial {
+    text-align: center;
+}
+
+.occupation {
+    font-size: 80%;
+    color: #808080;
+}
+
+.profile-img {
+    border-radius: 50%;
+}
+
+footer {
+    background-color: #28a745;
+    color: white;
+}
+
+footer .container {
+    height: 230px;
+}
+
+.contact-icons svg {
+    fill: white;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+footer svg:hover {
+    fill: #bdc6d0;
+}
+
+footer a:hover {
+    color: #bdc6d0;
+}
+
+@media (min-width: 768px) {
+
+    .container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    header {
+        background: url("../img/header.jpg") center;
+        text-align: right;
+    }
+
+    header .container {
+        flex-direction: column;
+        align-items: flex-end;
+        height: 400px;
+        padding-right: 45px;
+    }
+
+    header .button {
+        display: block;
+        background-color: #28a745;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    header .button:hover {
+        background-color: #1e7e34;
+    }
+
+    header .lead {
+        max-width: 600px;
+    }
+
+    h1 {
+        font-size: 7rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .feature {
+        flex: 1;
+        margin-right: 10px;
+    }
+
+    #uses {
+        background-color: #f8f9fa;
+    }
+
+    #uses .container {
+        flex-wrap: wrap;
+        padding: 40px 15px;
+    }
+
+    .use {
+        display: flex;
+        flex-basis: 50%;
+        padding: 10px;
+    }
+
+    footer .container {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        height: 175px;
+    }
+}
+
+@media (min-width: 992px) {
+    #uses .container {
+        flex-wrap: nowrap;
+    }
+}
+
+@media (min-width: 1140px) {
+    .container {
+        margin: auto;
+    }
+}

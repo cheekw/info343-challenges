@@ -1,0 +1,14 @@
+// Features CSS style for the spoon webpage
+
+#features {
+    margin: 65px 0;
+
+    .feature {
+        display: flex;
+
+        svg {
+            fill: $primary-color;
+            margin-right: 30px;
+        }
+    }
+}

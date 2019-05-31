@@ -2,6 +2,7 @@
 
 //TODO: set the JavaScript interpreter into script mode
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
+'use strict';
 
 //The following is only used by Visual Studio Code and other JSDoc-aware
 //editors. It doesn't affect the way your code is executed at runtime,
@@ -34,7 +35,11 @@ function getTitle(movie) {
     //(which is an object), or the literal string "(no title)" 
     //if the `movie` parameter is null/undefined or has no `title`
     //property
-    
+    if (movie && movie.title) {
+        return movie.title;
+    } else {
+        return "(no title)";
+    }
 }
 
 /**
@@ -47,7 +52,11 @@ function getTitle(movie) {
  */
 function getYearReleased(movie) {
     //TODO: implement this according to the comments above
-
+    if (movie && movie.released) {
+        return parseInt(movie.released);
+    } else {
+        return undefined;
+    }
 }
 
 /**
@@ -66,7 +75,11 @@ function getYearReleased(movie) {
  */
 function getCitation(movie) {
     //TODO: implement this according to the comments above
-
+    if (getYearReleased(movie)) {
+        return getTitle(movie) + " (" + getYearReleased(movie) + ")";
+    } else {
+        return getTitle(movie);
+    }
 }
 
 /**
@@ -81,7 +94,13 @@ function getCitation(movie) {
  */
 function getAvgTicketPrice(movie) {
     //TODO: implement this according to the comments above
-
+    if (!movie) {
+        return undefined;
+    } else if (!movie.gross && !movie.tickets) {
+        return NaN;
+    } else {
+        return movie.gross/movie.tickets;
+    }
 }
 
 /**
@@ -103,7 +122,12 @@ function totalTicketsSold(moviesArray) {
     //to calculate this value using functional programming techniques
     //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
     //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
-
+    return moviesArray.reduce((total, movie) => {
+        if (movie.gross) {
+            return total + movie.tickets;
+        }
+        return total;
+    }, 0);
 }
 
 /**
@@ -120,6 +144,7 @@ function allCitations(moviesArray) {
     //try using the .map() method on the moviesArray
     //to accomplish this in one short line of code!
     //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+    return moviesArray.map(getCitation);
 }
 
 /**
@@ -134,7 +159,17 @@ function topGrossingMovie(moviesArray) {
     //TODO: implement this according to the comments above
     //try using .reduce() or .forEach() to accomplish this
     //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
-
+    if (moviesArray.length == 0) {
+        return undefined;
+    } else {
+        return moviesArray.reduce((topMovie, movie) => {
+            if (movie.gross > topMovie.gross) {
+                return movie;
+            } else {
+                return topMovie;
+            }
+        });
+    }
 }
 
 /**
@@ -149,7 +184,7 @@ function onlyDisneyMovies(moviesArray) {
     //TODO: implement this according to the comments above
     //try using .filter() to accomplish this
     //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
-
+    return moviesArray.filter(movie => movie.distributor === "Walt Disney");
 }
 
 /**
@@ -163,7 +198,8 @@ function top10DisneyMovies(moviesArray) {
     //TODO: implement this according to the comments above
     //HINT: you can use the .sort() method to sort an array
     //and the .slice() method to slice off the first 10 elements
-    
+    return onlyDisneyMovies(moviesArray).sort((a, b) => b.gross - a.gross)
+        .slice(0, 10);
 }
 
 /**
@@ -175,7 +211,9 @@ function top10DisneyMovies(moviesArray) {
  */
 function top10Comedies(moviesArray) {
     //TODO: implement this according to the comments above
-
+    return moviesArray.filter((movie) => movie.genre === "Comedy")
+        .sort((a, b) => b.gross - a.gross)
+        .slice(0, 10);
 }
 
 /**
@@ -195,7 +233,15 @@ function distinctDistributors(moviesArray) {
     // that newer browsers support the Set collection (but older)
     // browsers will generate errors if you try to use Set)
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
-
+    let uniqueDistributors = new Set();
+    moviesArray.forEach((movie) => {
+        if (movie.distributor) {
+            uniqueDistributors.add(movie.distributor);
+        } else {
+            uniqueDistributors.add("(none)");
+        }
+    });
+    return Array.from(uniqueDistributors);
 }
 
 /**
@@ -215,7 +261,14 @@ function distinctDistributors(moviesArray) {
  */
 function countByRating(moviesArray) {
     //TODO: implement this according to the comments above
-
+    return moviesArray.reduce((distinctRatings, movie) => {
+        if (distinctRatings[movie.rating]) {
+            distinctRatings[movie.rating]++;
+        } else {
+            distinctRatings[movie.rating] = 1;
+        }
+        return distinctRatings;
+    }, {});
 }
 
 /**
@@ -251,7 +304,21 @@ function countByRating(moviesArray) {
  */
 function grossByGenre(moviesArray) {
     //TODO: implement this according to the comments above
-
+    return Object.values(moviesArray.reduce((grossGenrePairs, movie) => {
+        if (movie.genre === "") {
+            movie.genre = "(none)"
+        }
+        if (grossGenrePairs[movie.genre]) {
+            grossGenrePairs[movie.genre].gross += movie.gross;
+        } else {
+            grossGenrePairs[movie.genre] = {
+                genre: movie.genre,
+                gross: movie.gross
+            }
+        }
+        return grossGenrePairs;
+    }, {}))
+        .sort((a, b) => b.gross - a.gross);
 }
 
 
@@ -274,7 +341,31 @@ function grossByGenre(moviesArray) {
  * @returns {Object[]}
  */
 function ticketsByRating(moviesArray) {
-    //TODO: implement according to the comments
+    // TODO: implement according to the comments
+    return Object.values(moviesArray.reduce((ticketsRatingPairs, movie) => {
+        let value = 6;
+        if (movie.rating === "G") {
+            value = 1;
+        } else if (movie.rating === "PG") {
+            value = 2;
+        } else if (movie.rating === "PG-13") {
+            value = 3;
+        } else if (movie.rating === "R") {
+            value = 4;
+        } else if (movie.rating === "NC-17") {
+            value = 5;
+        }
+        if (ticketsRatingPairs[value]) {
+            ticketsRatingPairs[value].tickets += movie.tickets;
+        } else {
+
+            ticketsRatingPairs[value] = {
+                rating: movie.rating,
+                tickets: movie.tickets,
+            }
+        }
+        return ticketsRatingPairs;
+    }, {}));
 }
 
 /**
@@ -292,5 +383,18 @@ function ticketsByRating(moviesArray) {
  */
 function oldest10(moviesArray) {
     //TODO: implement according to the comments
-
+    return Object.values(moviesArray.reduce((oldest, movie) => {
+        if (getYearReleased(movie)) {
+            let release = moment().diff(movie.released, "year") + " years ago";
+            oldest[release] = {
+                title: movie.title,
+                releasedFromNow: release,
+                gross: movie.gross,
+                tickets: movie.tickets
+            };
+        }
+        return oldest;
+    }, {}))
+        .sort((a, b) => parseInt(b.releasedFromNow) - parseInt(a.releasedFromNow))
+        .slice(0, 10);
 }

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Kwuan Wei Chee">
+    <meta name="description" content="Website to browse a collection of movies">
+    <meta name="keywords" content="movies">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Movies</title>
+</head>
+
+<body>
+    <!-- the navbar  -->
+    <nav id="navbar" class="navbar navbar-light fixed-top">
+        <form id="searchBar" class="navbar-form">
+            <input id="titleSearch" type="search" class="form-control" placeholder="Search for movie title..." aria-label="Search for movie title...">
+        </form>
+        <div id="pages" class="pagination">
+            <span class="input-group-btn">
+                <button id="previous" class="btn btn-dark" type="button">
+                    <span>&laquo;</span>
+                </button>
+            </span>
+            <span id="pageNumber" class="input-group-addon show-md bg-white"></span>
+            <span id="page" class="input-group-addon hide-md bg-white"></span>
+            <span class="input-group-btn">
+                <button id="next" class="btn btn-dark" type="button">
+                    <span>&raquo;</span>
+                </button>
+            </span>
+        </div>
+    </nav>
+    <header class="jumbotron jumbotron-fluid text-white">
+        <div class="container">
+            <h1>Movies</h1>
+            <span>Browse our collection of movies</span>
+        </div>
+    </header>
+
+    <!-- main content -->
+    <main>
+        <div class="row">
+            <div id="sideBar" class="col-md-3 col-lg-2">
+                <div id="toggler" class="navbar-light">
+                    <button class="navbar-toggler mx-auto w-100 hide-md" type="button" data-toggle="collapse" data-target="#genresList" aria-controls="navbarSupportedContent"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div id="genresList" class="collapse">
+                    <ul id="genres" class="nav nav-pills nav-fill">
+                    </ul>
+                </div>
+            </div>
+            <div id="content" class="col-md-9 col-lg-10">
+                <div id="movies" class="row">
+                </div>
+            </div>
+            <div id="movieDetails" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="movieDetailsLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div id="modalHeader" class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div id="modalBody" class="modal-body">
+                            <img id="modalImg" class="text-center mx-auto" src="" alt="">
+                            <h3 id="modalTitle" class="modal-title"></h3>
+                            <h6 id="modalGenres"></h6>
+                            <h6 id="modalDate" class="text-muted"></h6>
+                            <p id="tagline" class="my-0"></p>
+                            <p id="modalDescription" class="my-0"></p>
+                            <h6 id="modalProductions"></h6>
+                            <a id="modalHomepage" href=""></a>
+                        </div>
+                        <div id="modalFooter" class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script id="entry-template" type="text/x-handlebars-template">
+                <div class="entry">
+                  <h1>{{title}}</h1>
+                  <div class="body">
+                    {{body}}
+                  </div>
+                </div>
+              </script>
+
+            <!-- card template for each movie -->
+            <script id="movieCardTemplate" type="text/x-handlebars-template">
+                <img class="card-img-top" src="{{backdrop}}" alt="{{alternative}}" data-toggle="modal" data-target="#movieDetails">
+                <div class="card-body">
+                    <h4 class="card-title text-primary">{{title}}</h4>
+                    <h6 class="card-subtitle text-muted">{{date}}</h6>
+                    <p class="card-text clamp">{{description}}</p>
+                    <span class="more text-primary">{{more}}</span>
+                </div>
+            </script>
+        </div>
+    </main>
+    <!-- script -->
+    <script src="assets/js/script.js"></script>
+
+    <!-- bootstrap cdn -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+
+    <!-- handlebars cdn -->
+    <script src="assets/js/handlebars-v4.0.11.js"></script>
+
+    <!--fetch cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
+</body>
+
+</html>

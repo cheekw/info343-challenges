@@ -1,0 +1,19 @@
+// Header CSS style for the spoon webpage
+
+header {
+    background-color: #e9ecef;
+
+    .container {
+        height: 250px;
+        padding: 35px $common-spacing;
+    }
+
+    .lead {
+        font-size: 125%;
+        font-weight: lighter;
+    }
+
+    .button {
+        display: none;
+    }
+}

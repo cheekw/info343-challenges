@@ -1,0 +1,100 @@
+$font-stack:    "Open Sans", -apple-system, BlinkMacSystemFont, 
+                "Segoe UI", Roboto, "Helvetica Neue", Arial, 
+                sans-serif, "Apple Color Emoji", "Segoe UI Emoji", 
+                "Segoe UI Symbol"; // The default font styles for the webpage'
+$primary-color: #28a745; // Theme color of the page
+$uses-color: #f8f9fa; // Base background color for uses section
+$common-spacing: 15px; // Spacing used for margins and padding
+
+// Imports the default CSS for the webpage
+@import 'default';
+@import 'header';
+@import 'features';
+@import 'uses';
+@import 'testimonials';
+@import 'footer';
+
+// Changes page layout for screens with width greater than 768 pixels
+@media (min-width: 768px) {
+
+    .container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    header {
+        background: url("../img/header.jpg") center;
+        text-align: right;
+
+        .container {
+            flex-direction: column;
+            align-items: flex-end;
+            height: 400px;
+            padding-right: 45px;
+        }
+
+        .button {
+            display: block;
+            background-color: $primary-color;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .button:hover {
+            background-color: darken($primary-color, 10%);
+        }
+
+        .lead {
+            max-width: 600px;
+        }
+    }
+
+    h1 {
+        font-size: 7rem;
+    }
+
+    .feature {
+        flex: 1;
+        margin-right: 10px;
+    }
+
+    #uses {
+        background-color: $uses-color;
+
+        .container {
+            flex-wrap: wrap;
+            padding: 40px $common-spacing;
+        }
+
+        .use {
+            display: flex;
+            flex-basis: 50%;
+            padding: 10px;
+        }
+
+        .card{
+            background-color: white;
+        }
+    }
+
+    footer .container {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        height: 175px;
+    }
+}
+
+// Changes page layout of Uses section for screens of width greater than 992 pixels
+@media (min-width: 992px) {
+    #uses .container {
+        flex-wrap: nowrap;
+    }
+}
+
+// Keeps container elements horozontally centered if view is wider than elements
+@media (min-width: 1140px) {
+    .container {
+        margin: auto;
+    }
+}
