@@ -1,0 +1,1 @@
+declare function moment(value: string): Object;

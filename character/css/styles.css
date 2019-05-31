@@ -1,0 +1,38 @@
+body {
+    margin: 40px;
+    font-family: -apple-system, BlinkMacSystemFont, 
+        "Segoe UI", Roboto, "Helvetica Neue", Arial, 
+        sans-serif;
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+table {
+    border-spacing: 50px 10px;
+    text-align: left;
+}
+
+img {
+    max-width: 400px;
+}
+
+p {
+    line-height: 1.5;
+}
+
+li {
+    margin: 10px;
+}
+
+.profile {
+    margin: 40px;
+    border: 1px solid black;
+    padding: 0 20px 20px 20px;
+    background-color: ghostwhite;
+    text-align: center;
+    float: left;
+}
+
+.content {
+    padding: 20px;
+}

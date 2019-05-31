@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Box Office 2016</title>
+
+    <link rel="icon" type="image/png" href="img/page-icon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+</head>
+<body>
+    <header class="jumbotron jumbotron-fluid bg-success text-white">
+        <div class="container-fluid">
+            <h1>Movie Box Office Data from 2016</h1>
+        </div>
+    </header>
+    <main class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <h2 class="text-success">Reports</h2>
+                <div class="list-group">
+                    <button class="list-group-item list-group-item-action report" 
+                        data-func="_allMovies">
+                        All Movies
+                    </button>
+                    <button class="list-group-item list-group-item-action report" 
+                        data-func="totalTicketsSold">
+                        Total Tickets Sold
+                    </button>
+                    <button class="list-group-item list-group-item-action report" 
+                        data-func="allCitations">
+                        All Citations
+                    </button>
+                    <button class="list-group-item list-group-item-action report" 
+                        data-func="topGrossingMovie">
+                        Top Grossing Movie
+                    </button>
+                    <button class="list-group-item list-group-item-action report" 
+                        data-func="onlyDisneyMovies">
+                        Walt Disney Movies
+                    </button>
+                    <button class="list-group-item list-group-item-action report" 
+                        data-func="top10DisneyMovies">
+                        Top 10 Walt Disney Movies
+                    </button>
+                    <button class="list-group-item list-group-item-action report" 
+                        data-func="top10Comedies">
+                        Top 10 Comedies
+                    </button>
+                    <button class="list-group-item list-group-item-action report" 
+                        data-func="distinctDistributors">
+                        Distinct Distributors
+                    </button>
+                    <button class="list-group-item list-group-item-action report" 
+                        data-func="countByRating">
+                        Count by Rating
+                    </button>
+                    <button class="list-group-item list-group-item-action report" 
+                        data-func="grossByGenre">
+                        Gross Sales by Genre
+                    </button>
+                    <button class="list-group-item list-group-item-action report" 
+                        data-func="ticketsByRating">
+                        Tickets By Rating
+                    </button>
+                    <button class="list-group-item list-group-item-action report" 
+                        data-func="oldest10">
+                        Oldest 10
+                    </button>
+                    
+                </div>
+            </div>
+            <div class="col-md-9">
+                <h2 id="report-name" class="text-success"></h2>
+                <div id="results"></div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+    <script src="data/movies-2016.js"></script>
+    <script src="js/reports.js"></script>
+    <script src="js/render.js"></script>
+</body>
+</html>

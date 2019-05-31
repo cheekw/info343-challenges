@@ -1,0 +1,2 @@
+# INFO 343-D Autumn 2017 Challenges
+This repo contains all the starter code you will need to complete the challenges. As you start each challenge, **create a new branch** as directed by the assignment and make all of your commits for that challenge to that new branch. When you are ready to submit, you'll create a pull request to merge those commits back into your `master` branch. We will use that pull request to provide detailed in-line comments about your code.
