@@ -14,8 +14,13 @@
     "querystringify": "^2.1.1",
     "react": "^16.8.6",
     "react-bootstrap": "^0.31.5",
+<<<<<<< HEAD
     "react-dom": "^16.8.6",
     "react-router-dom": "^4.3.1",
+=======
+    "react-dom": "^16.1.1",
+    "react-router-dom": "^4.2.2",
+>>>>>>> d58550ef568a99ccf1c932b842929a38040cba58
     "react-scripts": "^3.0.1",
     "react-showdown": "^1.6.0",
     "react-transition-group": "^2.9.0",
